@@ -75,3 +75,26 @@ body {
     margin-top: 10px;
 }
 
+.random_info  {
+    color: black;
+    background: #fff;
+    height: 30rem;
+    width: auto;
+}
+
+.info_header {
+    margin-top: 2rem;
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
