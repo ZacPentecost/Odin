@@ -31,38 +31,74 @@ function playerSelection() {
 
 /* Play a round of rock, paper, scissors */
 function playRound(playerSelection, computerSelection) {
+    /* Lose/Win/Tie Condition */
+    let condition = 0;
+    /* Parameters to win/lose by  */
+    const param = [playerSelection, computerSelection]
+
     /* Check for tie */
     if (playerSelection == computerSelection) {
-        return "It seems you both have the same idea!"
+        condition = 2;
     }
 
     /* Player chooses Rock */
     else if (playerSelection == 'Rock') {
-        if (computerSelection == 'Paper') {
-            return "You Lose! Paper beats Rock"
+        if (computerSelection == 'Scissors') {
+            condition = 1;
         }
-        else 
-            return "You Win! Rock beats Scissors"
     }
 
     /* Player chooses Paper */
     else if (playerSelection == 'Paper') {
         if (computerSelection == 'Rock') {
-            return "You Win! Paper beats Rock"
+            condition = 1;
         }
-        else 
-            return "You Lose! Scissors beats Paper"
     }
 
     /* Player chooses Scissors */
     else if (playerSelection == 'Scissors') {
         if (computerSelection == 'Paper') {
-            return "You Win! Scissors beats Paper"
+            condition = 1;
         }
-        else 
-            return "You Lose! Rock beats Scissors"
+    }
+
+    /* Write Final Message */
+    if (condition == 0) {
+        return [0, 'Oh no! You lost. ' + param[1] + ' beats ' + param[0]]
+    }
+    else if (condition == 1) {
+        return [1, 'Lets go! You won. ' + param[0] + ' beats ' + param[1]]
+    }
+    else {
+        return [2, 'Great minds think alike! Tie game!']
     }
 }
 
+/* Play a game - first to 5 rounds */
 
-console.log(playRound(playerSelection(), computerPlay()))
+function game() {
+    /* Initialize Scores */
+    let playerScore = 0;
+    let computerScore = 0;
+
+    /* Run rounds until either one gets to a score of 5 */
+    while (playerScore <= 4 && computerScore <= 4) {
+        /* Run a round and print the outcome */
+        let round = playRound(playerSelection(), computerPlay())
+        let condition = round[0]
+        console.log(round[1])
+
+        /* Increase score depending on who won */
+        if (condition == 0) {
+            computerScore ++;
+        }
+        else if (condition == 1) {
+            playerScore ++;
+        }
+    } 
+
+    console.log('Game Done')
+}
+
+/* Run the game */
+game()
