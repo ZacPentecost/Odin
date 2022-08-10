@@ -44,16 +44,33 @@ div.appendChild(test);
 
 //Method 2 - still not ideal
 // the JavaScript file
-const btn = document.querySelector('#btn');
-btn.onclick = () => alert("Hello World");
+// const btn1 = document.querySelector('#btn1');
+// btn1.onclick = () => alert("Hello World");
 
-//Method 3 - the best way to do things
-// the JavaScript file
+// //Method 3 - the best way to do things
+// // the JavaScript file
+// const btn2 = document.querySelector('#btn2');
+// btn2.addEventListener('click', () => {
+//   alert("Hello World");
+// });
+
+// // We can do every method above with functions instead
+// function alertFunction() {
+//   alert("YAY! YOU DID IT!");
+// }
+
+// // METHOD 2
+// btn.onclick = alertFunction;
+
+// // METHOD 3
+// btn.addEventListener('click', alertFunction);
+
+// ------ we can add more info if we add the following function
+
 const btn = document.querySelector('#btn');
-btn.addEventListener('click', () => {
-  alert("Hello World");
+btn.addEventListener('click', function (e) {
+  console.log(e);
 });
-
 
 
 
